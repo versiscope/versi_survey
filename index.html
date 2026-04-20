@@ -40,9 +40,11 @@
     padding: 0 24px;
   }
 
+  /* ── HERO — lives inside step 1, hidden on all other pages ── */
   header.hero {
     padding: 72px 0 48px;
     border-bottom: 1px solid var(--line);
+    margin-bottom: 0;
   }
   header.hero .eyebrow {
     font-size: 12px;
@@ -61,10 +63,7 @@
     margin-bottom: 20px;
     color: var(--ink);
   }
-  header.hero h1 em {
-    font-style: italic;
-    color: var(--accent-deep);
-  }
+  header.hero h1 em { font-style: italic; color: var(--accent-deep); }
   header.hero p.lede {
     font-size: 19px;
     color: var(--ink-soft);
@@ -87,6 +86,7 @@
     font-size: 15px;
   }
 
+  /* ── PROGRESS BAR ── */
   .progress-wrap {
     position: sticky;
     top: 0;
@@ -118,11 +118,12 @@
     transition: width 0.4s ease;
   }
 
-  section.step {
-    padding: 56px 0 24px;
-    border-bottom: 1px solid var(--line);
-  }
-  section.step:last-of-type { border-bottom: none; }
+  /* ── PAGE WIZARD ── */
+  section.step { display: none; }
+  section.step.active { display: block; }
+
+  /* step content area — pad top on non-hero pages */
+  .step-body { padding: 56px 0 32px; }
 
   .step-num {
     font-family: 'Fraunces', Georgia, serif;
@@ -149,9 +150,8 @@
     line-height: 1.55;
   }
 
-  .q {
-    margin-bottom: 32px;
-  }
+  /* ── FORM ELEMENTS ── */
+  .q { margin-bottom: 32px; }
   .q-label {
     display: block;
     font-weight: 600;
@@ -185,9 +185,7 @@
   }
   input[type="text"]::placeholder,
   input[type="email"]::placeholder,
-  textarea::placeholder {
-    color: #8a8a8a;
-  }
+  textarea::placeholder { color: #8a8a8a; }
   input[type="text"]:focus,
   input[type="email"]:focus,
   input[type="number"]:focus,
@@ -198,27 +196,15 @@
     box-shadow: 0 0 0 3px rgba(184, 67, 31, 0.15);
   }
   textarea { min-height: 96px; resize: vertical; line-height: 1.55; }
-  select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333333' d='M6 8L2 4h8z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333333' d='M6 8L2 4h8z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
 
-  .category {
-    margin-bottom: 48px;
-  }
-  .category-title {
-    font-size: 13px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: 700;
-    margin-bottom: 6px;
-    padding-bottom: 10px;
-    border-bottom: 1.5px solid var(--line-strong);
-  }
-  .category-desc {
-    font-size: 15px;
-    color: var(--ink-soft);
-    margin-bottom: 20px;
-    font-style: italic;
-  }
+  /* ── PAIN ROWS ── */
   .pain-row {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -228,12 +214,7 @@
     border-bottom: 1px dashed var(--line);
   }
   .pain-row:last-child { border-bottom: none; }
-  .pain-text {
-    font-size: 17px;
-    color: var(--ink);
-    line-height: 1.5;
-    font-weight: 400;
-  }
+  .pain-text { font-size: 17px; color: var(--ink); line-height: 1.5; }
   .pain-num {
     font-family: 'Fraunces', serif;
     font-style: italic;
@@ -242,19 +223,9 @@
     font-size: 16px;
     font-weight: 500;
   }
-  .pain-options {
-    display: flex;
-    gap: 6px;
-  }
-  .pain-options label {
-    cursor: pointer;
-    position: relative;
-  }
-  .pain-options input[type="radio"] {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-  }
+  .pain-options { display: flex; gap: 6px; }
+  .pain-options label { cursor: pointer; position: relative; }
+  .pain-options input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
   .pain-options .pill {
     display: inline-block;
     padding: 8px 14px;
@@ -280,6 +251,7 @@
     color: #fff;
   }
 
+  /* ── TOP 1 PICKER ── */
   .top1-wrap {
     background: var(--paper-warm);
     border: 1.5px solid var(--line-strong);
@@ -293,12 +265,7 @@
     padding: 20px 0;
     text-align: center;
   }
-  .top1-available {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 14px;
-  }
+  .top1-available { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
   .top1-chip {
     background: #fff;
     border: 1.5px solid var(--line-strong);
@@ -313,15 +280,8 @@
     color: var(--ink);
     font-weight: 500;
   }
-  .top1-chip:hover:not(:disabled) {
-    border-color: var(--accent);
-    color: var(--accent);
-    background: #fff;
-  }
-  .top1-chip:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-  }
+  .top1-chip:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+  .top1-chip:disabled { opacity: 0.4; cursor: not-allowed; }
   .top1-selected-slot {
     display: flex;
     align-items: center;
@@ -345,16 +305,8 @@
     flex-shrink: 0;
   }
   .top1-selected-slot.empty .top1-star { color: var(--ink-mute); }
-  .top1-text {
-    flex: 1;
-    font-size: 16px;
-    color: var(--ink);
-    line-height: 1.45;
-  }
-  .top1-selected-slot.empty .top1-text {
-    color: var(--ink-mute);
-    font-style: italic;
-  }
+  .top1-text { flex: 1; font-size: 16px; color: var(--ink); line-height: 1.45; }
+  .top1-selected-slot.empty .top1-text { color: var(--ink-mute); font-style: italic; }
   .top1-remove {
     background: none;
     border: none;
@@ -363,10 +315,10 @@
     font-size: 24px;
     padding: 4px 10px;
     line-height: 1;
-    font-weight: 400;
   }
   .top1-remove:hover { color: var(--accent); }
 
+  /* ── EVIDENCE ── */
   .evidence-block {
     background: var(--paper-warm);
     border: 1.5px solid var(--line-strong);
@@ -394,9 +346,7 @@
     letter-spacing: -0.01em;
     color: var(--ink);
   }
-  .evidence-q {
-    margin-bottom: 28px;
-  }
+  .evidence-q { margin-bottom: 28px; }
   .evidence-q:last-child { margin-bottom: 0; }
   .evidence-q-num {
     display: inline-block;
@@ -420,11 +370,10 @@
     vertical-align: middle;
   }
 
+  /* ── BOTTOM ACTION BAR ── */
   .actions {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    bottom: 0; left: 0; right: 0;
     background: var(--paper);
     border-top: 1.5px solid var(--line-strong);
     padding: 16px 24px;
@@ -439,11 +388,26 @@
     align-items: center;
     gap: 16px;
   }
-  .save-state {
-    font-size: 13px;
+  .actions-left { display: flex; flex-direction: column; gap: 4px; }
+  .save-state { font-size: 13px; color: var(--ink-soft); font-weight: 500; }
+  .validation-msg { font-size: 13px; color: var(--accent); font-weight: 600; min-height: 18px; }
+
+  button.back-btn {
+    background: transparent;
     color: var(--ink-soft);
-    font-weight: 500;
+    border: 1.5px solid var(--line-strong);
+    padding: 16px 24px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    border-radius: 2px;
+    white-space: nowrap;
   }
+  button.back-btn:hover { border-color: var(--ink); color: var(--ink); }
+
+  button.next-btn,
   button.submit-btn {
     background: var(--ink);
     color: #fff;
@@ -456,16 +420,15 @@
     cursor: pointer;
     transition: all 0.15s;
     border-radius: 2px;
+    white-space: nowrap;
   }
+  button.next-btn:hover,
   button.submit-btn:hover { background: var(--accent); }
   button.submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
   button.submit-btn:disabled:hover { background: var(--ink); }
 
-  .thankyou {
-    display: none;
-    text-align: center;
-    padding: 120px 0;
-  }
+  /* ── THANK YOU ── */
+  .thankyou { display: none; text-align: center; padding: 120px 0; }
   .thankyou.active { display: block; }
   .thankyou h2 {
     font-family: 'Fraunces', serif;
@@ -476,13 +439,7 @@
     color: var(--ink);
   }
   .thankyou h2 em { font-style: italic; color: var(--accent-deep); }
-  .thankyou p {
-    color: var(--ink-soft);
-    max-width: 520px;
-    margin: 0 auto 24px;
-    font-size: 18px;
-    line-height: 1.55;
-  }
+  .thankyou p { color: var(--ink-soft); max-width: 520px; margin: 0 auto 24px; font-size: 18px; line-height: 1.55; }
   .thankyou .response-id {
     display: inline-block;
     background: var(--paper-warm);
@@ -504,217 +461,90 @@
     margin-top: 12px;
     line-height: 1.55;
   }
-  .referral-field .q-label {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--ink-soft);
-  }
+  .referral-field .q-label { font-size: 15px; font-weight: 500; color: var(--ink-soft); }
 
   /* ============================================
-     MOBILE OPTIMIZATIONS
+     MOBILE
      ============================================ */
-
-  /* Tablets and phones */
   @media (max-width: 768px) {
     body { font-size: 16px; }
-
     .container { padding: 0 20px; }
 
-    /* Hero — tighter on mobile */
     header.hero { padding: 44px 0 32px; }
-    header.hero .eyebrow {
-      font-size: 11px;
-      margin-bottom: 14px;
-    }
-    header.hero h1 {
-      font-size: 30px;
-      line-height: 1.15;
-      margin-bottom: 16px;
-    }
-    header.hero p.lede {
-      font-size: 17px;
-      margin-bottom: 20px;
-    }
-    header.hero .meta {
-      gap: 16px;
-      font-size: 13px;
-    }
-    header.hero .meta span {
-      flex: 1 1 calc(50% - 8px);
-      min-width: 140px;
-    }
+    header.hero .eyebrow { font-size: 11px; margin-bottom: 14px; }
+    header.hero h1 { font-size: 30px; line-height: 1.15; margin-bottom: 16px; }
+    header.hero p.lede { font-size: 17px; margin-bottom: 20px; }
+    header.hero .meta { gap: 16px; font-size: 13px; }
+    header.hero .meta span { flex: 1 1 calc(50% - 8px); min-width: 140px; }
 
-    /* Progress bar — slimmer */
     .progress-wrap { padding: 10px 0; }
     .progress-inner { font-size: 12px; gap: 12px; }
     .progress-bar { height: 3px; }
-    #progressLabel {
-      max-width: 40%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
+    #progressLabel { max-width: 45%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
-    /* Section — tighter */
-    section.step { padding: 40px 0 12px; }
+    .step-body { padding: 36px 0 12px; }
     .step-num { font-size: 14px; margin-bottom: 8px; }
-    .step-title {
-      font-size: 26px;
-      line-height: 1.2;
-      margin-bottom: 12px;
-    }
-    .step-desc {
-      font-size: 16px;
-      margin-bottom: 28px;
-    }
+    .step-title { font-size: 26px; line-height: 1.2; margin-bottom: 12px; }
+    .step-desc { font-size: 16px; margin-bottom: 28px; }
 
-    /* Questions */
     .q { margin-bottom: 26px; }
     .q-label { font-size: 16px; }
     .q-help { font-size: 13px; margin-bottom: 10px; }
 
-    /* Inputs — bigger tap target, prevent iOS zoom with 16px+ font */
     input[type="text"],
     input[type="email"],
     input[type="number"],
     select,
-    textarea {
-      font-size: 16px;
-      padding: 14px 14px;
-    }
+    textarea { font-size: 16px; padding: 14px; }
     textarea { min-height: 110px; }
 
-    /* Category — less visual weight */
-    .category { margin-bottom: 36px; }
-    .category-title {
-      font-size: 12px;
-      padding-bottom: 8px;
-    }
-    .category-desc { font-size: 14px; margin-bottom: 14px; }
-
-    /* ========== PAIN ROW — the big mobile fix ==========
-       Stack pain text on top, 3 fat pills below that fill full width */
-    .pain-row {
-      grid-template-columns: 1fr;
-      gap: 12px;
-      padding: 16px 0;
-    }
+    .pain-row { grid-template-columns: 1fr; gap: 12px; padding: 16px 0; }
     .pain-text { font-size: 16px; line-height: 1.45; }
-    .pain-num { font-size: 15px; }
-    .pain-options {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 6px;
-      width: 100%;
-    }
+    .pain-options { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; width: 100%; }
     .pain-options label { width: 100%; }
-    .pain-options .pill {
-      display: block;
-      width: 100%;
-      text-align: center;
-      padding: 12px 8px;  /* 44px+ tap target */
-      font-size: 14px;
-      font-weight: 600;
-    }
+    .pain-options .pill { display: block; width: 100%; text-align: center; padding: 12px 8px; font-size: 14px; font-weight: 600; }
 
-    /* Top 1 picker */
     .top1-wrap { padding: 20px; }
-    .top1-chip {
-      width: 100%;
-      padding: 14px 16px;  /* fat tap target */
-      font-size: 14px;
-      line-height: 1.4;
-    }
-    .top1-selected-slot {
-      padding: 16px;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+    .top1-chip { width: 100%; padding: 14px 16px; font-size: 14px; line-height: 1.4; }
+    .top1-selected-slot { padding: 16px; gap: 10px; flex-wrap: wrap; }
     .top1-text { font-size: 15px; line-height: 1.4; }
     .top1-star { font-size: 22px; }
-    .top1-remove {
-      font-size: 28px;  /* bigger tap target */
-      padding: 6px 12px;
-    }
+    .top1-remove { font-size: 28px; padding: 6px 12px; }
 
-    /* Evidence block */
     .evidence-block { padding: 22px 18px; }
-    .evidence-header {
-      padding-bottom: 16px;
-      margin-bottom: 20px;
-    }
-    .evidence-pain-title {
-      font-size: 19px;
-      line-height: 1.3;
-    }
+    .evidence-header { padding-bottom: 16px; margin-bottom: 20px; }
+    .evidence-pain-title { font-size: 19px; }
     .evidence-q { margin-bottom: 22px; }
-    .evidence-q-num { font-size: 15px; }
-    .evidence-q-kill {
-      display: inline-block;
-      font-size: 10px;
-      padding: 3px 6px;
-      margin-left: 6px;
-    }
+    .evidence-q-kill { font-size: 10px; padding: 3px 6px; margin-left: 6px; }
 
-    /* Submit bar — respect iPhone home indicator */
-    .actions {
-      padding: 12px 16px calc(12px + env(safe-area-inset-bottom)) 16px;
-    }
-    .actions-inner {
-      flex-direction: column-reverse;
-      align-items: stretch;
-      gap: 8px;
-    }
-    button.submit-btn {
-      width: 100%;
-      padding: 16px;
-      font-size: 15px;
-    }
-    .save-state {
-      text-align: center;
-      font-size: 12px;
-    }
+    .actions { padding: 12px 16px calc(12px + env(safe-area-inset-bottom)) 16px; }
+    .actions-inner { flex-direction: column; align-items: stretch; gap: 8px; }
+    .actions-left { order: 3; align-items: center; }
+    button.next-btn, button.submit-btn { width: 100%; padding: 16px; font-size: 15px; order: 1; }
+    button.back-btn { order: 2; width: 100%; padding: 14px; font-size: 15px; text-align: center; }
+    .validation-msg { text-align: center; }
+    .save-state { font-size: 12px; }
 
-    /* Thank you */
     .thankyou { padding: 80px 0 60px; }
     .thankyou h2 { font-size: 32px; }
     .thankyou p { font-size: 16px; }
-
     .flag-note { font-size: 13px; padding: 12px 14px; }
   }
 
-  /* Very small phones (iPhone SE, old Android) */
   @media (max-width: 380px) {
     .container { padding: 0 16px; }
     header.hero h1 { font-size: 26px; }
-    header.hero p.lede { font-size: 16px; }
     .step-title { font-size: 24px; }
-    .pain-options .pill {
-      font-size: 13px;
-      padding: 12px 4px;
-    }
+    .pain-options .pill { font-size: 13px; padding: 12px 4px; }
     .top1-chip { font-size: 13px; }
     .evidence-block { padding: 18px 14px; }
   }
 
-  /* Better tap feedback on touch devices */
   @media (hover: none) {
-    .pain-options label:active .pill {
-      transform: scale(0.95);
-      background: var(--paper-warm);
-    }
-    .top1-chip:active:not(:disabled) {
-      transform: scale(0.98);
-      background: var(--paper-warm);
-    }
-    button.submit-btn:active:not(:disabled) {
-      transform: scale(0.98);
-    }
-    /* Remove hover states that get stuck on touch */
-    .pain-options label:hover .pill {
-      border-color: var(--line-strong);
-      background: #fff;
-    }
+    .pain-options label:active .pill { transform: scale(0.95); background: var(--paper-warm); }
+    .top1-chip:active:not(:disabled) { transform: scale(0.98); background: var(--paper-warm); }
+    button.next-btn:active, button.submit-btn:active:not(:disabled) { transform: scale(0.98); }
+    .pain-options label:hover .pill { border-color: var(--line-strong); background: #fff; }
   }
 </style>
 </head>
@@ -723,9 +553,9 @@
 <div class="progress-wrap">
   <div class="container">
     <div class="progress-inner">
-      <span id="progressLabel">Getting started</span>
+      <span id="progressLabel">Step 1 of 9</span>
       <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-      <span id="progressPct">0%</span>
+      <span id="progressPct">11%</span>
     </div>
   </div>
 </div>
@@ -733,152 +563,238 @@
 <form id="surveyForm">
 <div id="mainContent">
 
-<header class="hero">
-  <div class="container">
-    <div class="eyebrow">Customer Research · Roofing Industry</div>
-    <h1>We're building something for the sales-to-production handoff. <em>Help us build it right.</em></h1>
-    <p class="lede">Contracts with errors. Margins quietly bleeding. Price books that never quite match reality. Material orders built by hand. We want to fix it — but only if we're solving a problem you'd actually pay to solve. Tell us the truth, not what's polite.</p>
-    <div class="meta">
-      <span><strong>6–8 minutes</strong>honest answers beat long ones</span>
-      <span><strong>Anonymous</strong>unless you leave contact info at the end</span>
-      <span><strong>No sales pitch</strong>we're listening, not selling</span>
-    </div>
-  </div>
-</header>
-
-<!-- STEP 1: CONTEXT -->
+<!-- ══════════════════════════════════════════
+     STEP 1 — Context (hero lives here only)
+     ══════════════════════════════════════════ -->
 <section class="step" data-step="1">
-  <div class="container">
-    <div class="step-num">Step 1 of 4</div>
-    <h2 class="step-title">About your company</h2>
-    <p class="step-desc">So we can make sense of your answers and spot patterns across shops of different sizes.</p>
 
-    <div class="q">
-      <label class="q-label">Your role</label>
-      <select name="role" required>
-        <option value="">Select your role…</option>
-        <option>Owner / Founder</option>
-        <option>General Manager</option>
-        <option>Production Manager</option>
-        <option>Operations Manager</option>
-        <option>Sales Manager</option>
-        <option>Sales Rep</option>
-        <option>Estimator</option>
-        <option>Office / Admin</option>
-        <option>Other</option>
-      </select>
+  <header class="hero">
+    <div class="container">
+      <div class="eyebrow">Customer Research · Roofing Industry</div>
+      <h1>We're building something for the sales-to-production handoff. <em>Help us build it right.</em></h1>
+      <p class="lede">Contracts with errors. Margins quietly bleeding. Price books that never quite match reality. Material orders built by hand. We want to fix it — but only if we're solving a problem you'd actually pay to solve. Tell us the truth, not what's polite.</p>
+      <div class="meta">
+        <span><strong>6–8 minutes</strong>honest answers beat long ones</span>
+        <span><strong>Anonymous</strong>unless you leave contact info at the end</span>
+        <span><strong>No sales pitch</strong>we're listening, not selling</span>
+      </div>
     </div>
+  </header>
 
-    <div class="q">
-      <label class="q-label">Approximate annual revenue</label>
-      <select name="revenue" required>
-        <option value="">Select a range…</option>
-        <option>Under $500k</option>
-        <option>$500k – $1M</option>
-        <option>$1M – $3M</option>
-        <option>$3M – $5M</option>
-        <option>$5M – $10M</option>
-        <option>$10M – $25M</option>
-        <option>$25M+</option>
-      </select>
-    </div>
+  <div class="step-body">
+    <div class="container">
+      <div class="step-num"></div>
+      <h2 class="step-title">About your company</h2>
+      <p class="step-desc">So we can make sense of your answers and spot patterns across shops of different sizes.</p>
 
-    <div class="q">
-      <label class="q-label">What type of roofing work?</label>
-      <select name="workType" required>
-        <option value="">Select…</option>
-        <option>Residential retail</option>
-        <option>Residential insurance / storm restoration</option>
-        <option>Commercial</option>
-        <option>Mix of residential and commercial</option>
-        <option>Other</option>
-      </select>
-    </div>
+      <div class="q">
+        <label class="q-label">Your role</label>
+        <select name="role">
+          <option value="">Select your role…</option>
+          <option>Owner / Founder</option>
+          <option>General Manager</option>
+          <option>Production Manager</option>
+          <option>Operations Manager</option>
+          <option>Sales Manager</option>
+          <option>Sales Rep</option>
+          <option>Estimator</option>
+          <option>Office / Admin</option>
+          <option>Other</option>
+        </select>
+      </div>
 
-    <div class="q">
-      <label class="q-label">What software do you currently use for estimates, CRM, or takeoff?</label>
-      <p class="q-help">JobNimbus, AccuLynx, Roofr, ServiceTitan, Leap, SumoQuote, EagleView, Hover, spreadsheets — whatever you actually use.</p>
-      <textarea name="currentSoftware" placeholder="List the tools you use day-to-day…"></textarea>
+      <div class="q">
+        <label class="q-label">Approximate annual revenue</label>
+        <select name="revenue">
+          <option value="">Select a range…</option>
+          <option>Under $500k</option>
+          <option>$500k – $1M</option>
+          <option>$1M – $3M</option>
+          <option>$3M – $5M</option>
+          <option>$5M – $10M</option>
+          <option>$10M – $25M</option>
+          <option>$25M+</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="q-label">What type of roofing work?</label>
+        <select name="workType">
+          <option value="">Select…</option>
+          <option>Residential retail</option>
+          <option>Residential insurance / storm restoration</option>
+          <option>Commercial</option>
+          <option>Mix of residential and commercial</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="q-label">What software do you currently use for estimates, CRM, or takeoff?</label>
+        <p class="q-help">JobNimbus, AccuLynx, Roofr, ServiceTitan, Leap, SumoQuote, EagleView, Hover, spreadsheets — whatever you actually use.</p>
+        <textarea name="currentSoftware" placeholder="List the tools you use day-to-day…"></textarea>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- STEP 2: PAIN CHECKLIST -->
-<section class="step" data-step="2">
-  <div class="container">
-    <div class="step-num">Step 2 of 4</div>
-    <h2 class="step-title">Where does it hurt?</h2>
-    <p class="step-desc">We've grouped the common pain points from lead to install. For each one, tell us if it's painful in your shop. Don't overthink it — gut reaction. <strong>You don't have to have an opinion on every item</strong> — skip what doesn't apply.</p>
-
-    <div id="painCategories"></div>
-
-    <div class="q" style="margin-top: 40px;">
-      <label class="q-label">Anything painful we missed?</label>
-      <p class="q-help">Anything in the sales-to-handoff process that keeps you up at night that we didn't cover.</p>
-      <textarea name="customPain" placeholder="In your own words…"></textarea>
+<!-- ══════════════════════════════════════════
+     STEP 2A — Sales Stage
+     ══════════════════════════════════════════ -->
+<section class="step" data-step="2a">
+  <div class="step-body">
+    <div class="container">
+      <div class="step-num"></div>
+      <h2 class="step-title">Sales Stage — Estimating & Closing</h2>
+      <p class="step-desc">From first handshake to signed contract. Mark each one honestly — gut reaction is fine.</p>
+      <div id="pains-sales"></div>
     </div>
   </div>
 </section>
 
-<!-- STEP 3: TOP 1 PICKER -->
-<section class="step hidden" data-step="3" id="step3">
-  <div class="container">
-    <div class="step-num">Step 3 of 4</div>
-    <h2 class="step-title">Which one would you fix tomorrow?</h2>
-    <p class="step-desc">Of the pains you flagged, pick the <em>one</em> that — if you could wave a magic wand and permanently fix it tomorrow — would make the biggest difference to your business. This is the one we're going to dig into.</p>
+<!-- ══════════════════════════════════════════
+     STEP 2B — Price Book
+     ══════════════════════════════════════════ -->
+<section class="step" data-step="2b">
+  <div class="step-body">
+    <div class="container">
+      <div class="step-num"></div>
+      <h2 class="step-title">Price Book & Pricing</h2>
+      <p class="step-desc">How you keep your numbers accurate — and what happens when you can't.</p>
+      <div id="pains-pricebook"></div>
+    </div>
+  </div>
+</section>
 
-    <div class="top1-wrap">
-      <strong style="display:block; margin-bottom:10px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-mute);">Your Top Pain</strong>
-      <div id="top1Selected">
-        <div class="top1-selected-slot empty">
-          <span class="top1-star">★</span>
-          <span class="top1-text">Tap a pain below to select it</span>
+<!-- ══════════════════════════════════════════
+     STEP 2C — Contract & Handoff
+     ══════════════════════════════════════════ -->
+<section class="step" data-step="2c">
+  <div class="step-body">
+    <div class="container">
+      <div class="step-num"></div>
+      <h2 class="step-title">Contract & Handoff to Production</h2>
+      <p class="step-desc">The moment a deal moves from sales to ops. This is where a lot of money gets left on the table.</p>
+      <div id="pains-handoff"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     STEP 2D — Work Orders & Material Orders
+     ══════════════════════════════════════════ -->
+<section class="step" data-step="2d">
+  <div class="step-body">
+    <div class="container">
+      <div class="step-num"></div>
+      <h2 class="step-title">Work Orders & Material Orders</h2>
+      <p class="step-desc">Getting the job ready to execute once it's sold.</p>
+      <div id="pains-orders"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     STEP 2E — Vendor & Supplier Communication
+     ══════════════════════════════════════════ -->
+<section class="step" data-step="2e">
+  <div class="step-body">
+    <div class="container">
+      <div class="step-num"></div>
+      <h2 class="step-title">Vendor & Supplier Communication</h2>
+      <p class="step-desc">Coordinating with the people who supply your materials.</p>
+      <div id="pains-vendors"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     STEP 2F — Costs & Impact
+     ══════════════════════════════════════════ -->
+<section class="step" data-step="2f">
+  <div class="step-body">
+    <div class="container">
+      <div class="step-num"></div>
+      <h2 class="step-title">Costs & Impact</h2>
+      <p class="step-desc">The real-dollar and real-time drains these problems cause. Mark what hits home.</p>
+      <div id="pains-costs"></div>
+
+      <div class="q" style="margin-top: 40px;">
+        <label class="q-label">Anything painful we missed?</label>
+        <p class="q-help">Anything in the sales-to-handoff process that keeps you up at night that we didn't cover.</p>
+        <textarea name="customPain" placeholder="In your own words…"></textarea>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     STEP 3 — Top 1 Picker
+     ══════════════════════════════════════════ -->
+<section class="step" data-step="3">
+  <div class="step-body">
+    <div class="container">
+      <div class="step-num"></div>
+      <h2 class="step-title">Which one would you fix tomorrow?</h2>
+      <p class="step-desc">Of the pains you flagged, pick the <em>one</em> that — if you could wave a magic wand and permanently fix it tomorrow — would make the biggest difference to your business.</p>
+
+      <div class="top1-wrap">
+        <strong style="display:block; margin-bottom:10px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-mute);">Your Top Pain</strong>
+        <div id="top1Selected">
+          <div class="top1-selected-slot empty">
+            <span class="top1-star">★</span>
+            <span class="top1-text">Tap a pain below to select it</span>
+          </div>
+        </div>
+
+        <div style="margin-top: 28px;">
+          <strong style="display:block; margin-bottom:4px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-mute);">Available pains</strong>
+          <p class="q-help" style="margin-bottom: 0;">Only the ones you marked "Yes" appear here.</p>
+        </div>
+        <div class="top1-available" id="top1Available">
+          <div class="top1-empty">Go back and mark some pains as "Yes" to populate this list.</div>
         </div>
       </div>
-
-      <div style="margin-top: 28px;">
-        <strong style="display:block; margin-bottom:4px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-mute);">Available pains</strong>
-        <p class="q-help" style="margin-bottom: 0;">Only the ones you marked "yes, painful" appear here.</p>
-      </div>
-      <div class="top1-available" id="top1Available">
-        <div class="top1-empty">Go back to Step 2 and mark some pains as "yes, painful" to populate this list.</div>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- STEP 4: EVIDENCE -->
-<section class="step hidden" data-step="4" id="step4">
-  <div class="container">
-    <div class="step-num">Step 4 of 4</div>
-    <h2 class="step-title">Tell us a bit more</h2>
-    <p class="step-desc">A handful of quick questions about your top pain. The more real your answer, the better we can build something that actually helps. Ballparks, guesses, and rough memories are all fine — we're not looking for precision.</p>
+<!-- ══════════════════════════════════════════
+     STEP 4 — Evidence & Close
+     ══════════════════════════════════════════ -->
+<section class="step" data-step="4">
+  <div class="step-body">
+    <div class="container">
+      <div class="step-num"></div>
+      <h2 class="step-title">Tell us a bit more</h2>
+      <p class="step-desc">A handful of quick questions about your top pain. Ballparks, guesses, and rough memories are all fine — we're not looking for precision.</p>
 
-    <div id="evidenceBlocks"></div>
+      <div id="evidenceBlocks"></div>
 
-    <div class="q" style="margin-top: 40px;">
-      <label class="q-label">If we built exactly what you described, what would it need to do to be a no-brainer for you?</label>
-      <textarea name="noBrainer" placeholder="In your own words…"></textarea>
+      <div class="q" style="margin-top: 40px;">
+        <label class="q-label">If we built exactly what you described, what would it need to do to be a no-brainer for you?</label>
+        <textarea name="noBrainer" placeholder="In your own words…"></textarea>
+      </div>
+
+      <div class="q">
+        <label class="q-label">Ballpark monthly cost where you'd sign up without thinking twice?</label>
+        <p class="q-help">No wrong answer. We want your real number, not a polite one.</p>
+        <input type="text" name="priceAnchor" placeholder="e.g. $200/mo, $1,000/mo, I'd need to see ROI first">
+      </div>
+
+      <div class="q">
+        <label class="q-label">Your name and email <span style="color: var(--ink-mute); font-weight: 400;">— optional, only if you want us to follow up</span></label>
+        <input type="text" name="name" placeholder="Name (optional)">
+        <input type="email" name="email" placeholder="Email (optional)" style="margin-top: 8px;">
+      </div>
+
+      <div class="q referral-field">
+        <label class="q-label">Know anyone else we should talk to? <span style="color: var(--ink-mute); font-weight: 400;">— totally optional</span></label>
+        <textarea name="referrals" placeholder="First name + company is plenty. No pressure."></textarea>
+      </div>
+
+      <p class="flag-note">Heads up: when you hit submit, your answers go to our founding team. We read every response personally. If you left contact info, expect a short thank-you note — never a sales call you didn't ask for.</p>
     </div>
-
-    <div class="q">
-      <label class="q-label">Ballpark monthly cost where you'd sign up without thinking twice?</label>
-      <p class="q-help">No wrong answer. We want your real number, not a polite one.</p>
-      <input type="text" name="priceAnchor" placeholder="e.g. $200/mo, $1,000/mo, I'd need to see ROI first">
-    </div>
-
-    <div class="q">
-      <label class="q-label">Your name and email <span style="color: var(--ink-mute); font-weight: 400;">— optional, only if you want us to follow up</span></label>
-      <input type="text" name="name" placeholder="Name (optional)">
-      <input type="email" name="email" placeholder="Email (optional)" style="margin-top: 8px;">
-    </div>
-
-    <div class="q referral-field">
-      <label class="q-label">Know anyone else we should talk to? <span style="color: var(--ink-mute); font-weight: 400;">— totally optional</span></label>
-      <textarea name="referrals" placeholder="First name + company is plenty. No pressure."></textarea>
-    </div>
-
-    <p class="flag-note">Heads up: when you hit submit, your answers go to our founding team. We read every response personally. If you left contact info, expect a short thank-you note — never a sales call you didn't ask for.</p>
   </div>
 </section>
 
@@ -895,8 +811,13 @@
 
 <div class="actions" id="actionsBar">
   <div class="actions-inner">
-    <span class="save-state" id="saveState">Your answers save automatically as you type.</span>
-    <button type="submit" class="submit-btn" id="submitBtn">Submit responses</button>
+    <button type="button" class="back-btn hidden" id="backBtn">← Back</button>
+    <div class="actions-left">
+      <span class="validation-msg" id="validationMsg"></span>
+      <span class="save-state" id="saveState">Your answers save automatically as you type.</span>
+    </div>
+    <button type="button" class="next-btn" id="nextBtn">Continue →</button>
+    <button type="submit" class="submit-btn hidden" id="submitBtn">Submit responses</button>
   </div>
 </div>
 
@@ -904,36 +825,34 @@
 
 <script>
 // ============================================
-// PAIN POINT DATA — 26 items across 6 categories
+// PAIN POINT DATA — 24 items across 6 categories
+// (Section F trimmed from 6 → 4)
 // ============================================
 const painCategories = [
   {
     id: 'sales',
-    title: 'A · Sales Stage — Estimating & Closing',
-    desc: 'From first handshake to signed contract.',
+    containerId: 'pains-sales',
     pains: [
-      { id: 1, text: "Can't close same-day because building an accurate estimate takes too long — we lose deals to faster competitors" },
-      { id: 2, text: "Sales reps guess at pricing in the field because the price book is out of date or hard to navigate" },
-      { id: 3, text: "Takes weeks or months to train a new rep on our estimating tools and pricing" },
-      { id: 4, text: "Reps sell jobs below target margin because they miss line items or don't know current costs" },
-      { id: 5, text: "Aerial measurement reports (EagleView, Hover, RoofScope) don't flow cleanly into our estimate" },
+      { id: 1,  text: "Can't close same-day because building an accurate estimate takes too long — we lose deals to faster competitors" },
+      { id: 2,  text: "Sales reps guess at pricing in the field because the price book is out of date or hard to navigate" },
+      { id: 3,  text: "Takes weeks or months to train a new rep on our estimating tools and pricing" },
+      { id: 4,  text: "Reps sell jobs below target margin because they miss line items or don't know current costs" },
+      { id: 5,  text: "Aerial measurement reports (EagleView, Hover, RoofScope) don't flow cleanly into our estimate" },
     ]
   },
   {
     id: 'pricebook',
-    title: 'B · Price Book & Pricing',
-    desc: 'How you keep your numbers accurate.',
+    containerId: 'pains-pricebook',
     pains: [
-      { id: 6, text: "Updating the price book when material costs change is a manual, painful process" },
-      { id: 7, text: "Adding a new item (new product, new supplier SKU) to the price book takes too long" },
-      { id: 8, text: "Pricing, labor rates, waste factors, and markups aren't consistent across reps or estimates" },
-      { id: 9, text: "Supplier price changes hit us before our price book catches up — we eat the difference" },
+      { id: 6,  text: "Updating the price book when material costs change is a manual, painful process" },
+      { id: 7,  text: "Adding a new item (new product, new supplier SKU) to the price book takes too long" },
+      { id: 8,  text: "Pricing, labor rates, waste factors, and markups aren't consistent across reps or estimates" },
+      { id: 9,  text: "Supplier price changes hit us before our price book catches up — we eat the difference" },
     ]
   },
   {
     id: 'handoff',
-    title: 'C · Contract & Handoff to Production',
-    desc: 'The moment a deal moves from sales to ops.',
+    containerId: 'pains-handoff',
     pains: [
       { id: 10, text: "Contracts come back with errors (wrong scope, wrong address, missing signatures, bad math) and can't be executed" },
       { id: 11, text: "Production finds scope gaps, missing items, or has to re-do the estimate after the fact" },
@@ -943,18 +862,16 @@ const painCategories = [
   },
   {
     id: 'orders',
-    title: 'D · Work Orders & Material Orders',
-    desc: 'Getting the job ready to execute.',
+    containerId: 'pains-orders',
     pains: [
       { id: 14, text: "Someone manually builds work orders and material orders from the signed estimate" },
-      { id: 15, text: "Human error on work orders and material orders (wrong colors, wrong specs, missed details) causes rework, returns, or lost profit after the fact" },
+      { id: 15, text: "Human error on work orders and material orders (wrong colors, wrong specs, missed details) causes rework, returns, or lost profit" },
       { id: 16, text: "We don't know a job's projected profit until after the material order is built" },
     ]
   },
   {
     id: 'vendors',
-    title: 'E · Vendor & Supplier Communication',
-    desc: 'Coordinating with the people who supply your materials.',
+    containerId: 'pains-vendors',
     pains: [
       { id: 17, text: "Supplier communication is scattered across text, email, phone, and voicemail" },
       { id: 18, text: "We can't easily see all pending deliveries and dates in one place" },
@@ -964,98 +881,52 @@ const painCategories = [
   },
   {
     id: 'costs',
-    title: 'F · Costs, Frustrations & Bleed',
-    desc: 'Do you personally experience these costs or frustrations today? Mark the ones that are real drains on your shop — in money, time, energy, or ability to grow.',
+    containerId: 'pains-costs',
     pains: [
       { id: 21, text: "Onboarding and training new reps or coordinators is slow and expensive — it limits how fast we can grow" },
-      { id: 22, text: "Salaries for office staff whose main job is manually stitching all this together" },
       { id: 23, text: "Direct cost of errors — eaten change orders, rework, expedited shipping, wrong materials" },
       { id: 24, text: "Lost profit on jobs sold below margin that we didn't catch in time" },
       { id: 25, text: "Opportunity cost — deals we didn't close because we were too slow to quote" },
-      { id: 26, text: "Owner or GM is the bottleneck approving or reviewing every estimate" },
     ]
   }
 ];
 
 // ============================================
-// EVIDENCE QUESTIONS — 7 total, softer tone
+// EVIDENCE QUESTIONS
 // ============================================
 const evidenceQuestions = [
-  {
-    id: 'q1',
-    label: 'Think of a recent time this came up in your shop. What happened?',
-    placeholder: 'A recent job, a recent week, a recent headache — whatever comes to mind first.',
-    kill: false
-  },
-  {
-    id: 'q2',
-    label: 'How often does this happen? Once in a while, every few weeks, or is it constant background noise?',
-    placeholder: "Rough is fine — 'once a month,' 'every other job,' 'daily,' etc.",
-    kill: false
-  },
-  {
-    id: 'q3',
-    label: 'Who in your company feels this pain the most? Owner, sales, production, office staff, or the customer?',
-    placeholder: 'One person, a few people, a whole department…',
-    kill: false
-  },
-  {
-    id: 'q4',
-    label: 'What does this cost you when it happens, and roughly how much does it add up to over a year?',
-    placeholder: 'A rough sense of the per-incident cost and the annual bleed — ballparks are fine.',
-    kill: false
-  },
-  {
-    id: 'q6',
-    label: 'Have you tried to solve this before? What did you try — a tool, a new hire, a process change, a spreadsheet, anything?',
-    placeholder: "Anything counts, even if it didn't work.",
-    kill: true
-  },
-  {
-    id: 'q7',
-    label: 'Have you ever paid for something to try to fix this? Software, a consultant, a new role, a custom build — no wrong answer.',
-    placeholder: 'Ballpark cost and who you paid, if you remember.',
-    kill: true
-  },
-  {
-    id: 'q8',
-    label: "If those solutions didn't fully fix it, what was missing? What would a better solution need to do?",
-    placeholder: 'This is where we learn the most — what you wish existed.',
-    kill: false
-  },
+  { id: 'q1', label: 'Think of a recent time this came up in your shop. What happened?',                                                                placeholder: 'A recent job, a recent week, a recent headache — whatever comes to mind first.', kill: false },
+  { id: 'q2', label: 'How often does this happen? Once in a while, every few weeks, or is it constant background noise?',                               placeholder: "Rough is fine — 'once a month,' 'every other job,' 'daily,' etc.", kill: false },
+  { id: 'q3', label: 'Who in your company feels this pain the most? Owner, sales, production, office staff, or the customer?',                          placeholder: 'One person, a few people, a whole department…', kill: false },
+  { id: 'q4', label: 'What does this cost you when it happens, and roughly how much does it add up to over a year?',                                    placeholder: 'A rough sense of the per-incident cost and the annual bleed — ballparks are fine.', kill: false },
+  { id: 'q6', label: 'Have you tried to solve this before? What did you try — a tool, a new hire, a process change, a spreadsheet, anything?',         placeholder: "Anything counts, even if it didn't work.", kill: true },
+  { id: 'q7', label: 'Have you ever paid for something to try to fix this? Software, a consultant, a new role, a custom build — no wrong answer.',      placeholder: 'Ballpark cost and who you paid, if you remember.', kill: true },
+  { id: 'q8', label: "If those solutions didn't fully fix it, what was missing? What would a better solution need to do?",                              placeholder: 'This is where we learn the most — what you wish existed.', kill: false },
 ];
 
 // ============================================
-// RENDER PAIN CHECKLIST
+// RENDER PAIN ROWS INTO EACH SECTION
 // ============================================
-const painContainer = document.getElementById('painCategories');
-let painHtml = '';
+function renderPainRow(p) {
+  return `<div class="pain-row" data-pain-id="${p.id}">
+    <div class="pain-text"><span class="pain-num">${p.id}.</span>${p.text}</div>
+    <div class="pain-options">
+      <label><input type="radio" name="pain_${p.id}" value="yes"><span class="pill">Yes</span></label>
+      <label><input type="radio" name="pain_${p.id}" value="kinda"><span class="pill">Kind of</span></label>
+      <label><input type="radio" name="pain_${p.id}" value="no"><span class="pill">Not us</span></label>
+    </div>
+  </div>`;
+}
+
 painCategories.forEach(cat => {
-  painHtml += `<div class="category">
-    <div class="category-title">${cat.title}</div>
-    <div class="category-desc">${cat.desc}</div>`;
-  cat.pains.forEach(p => {
-    painHtml += `<div class="pain-row" data-pain-id="${p.id}">
-      <div class="pain-text"><span class="pain-num">${p.id}.</span>${p.text}</div>
-      <div class="pain-options">
-        <label><input type="radio" name="pain_${p.id}" value="yes"><span class="pill">Yes</span></label>
-        <label><input type="radio" name="pain_${p.id}" value="kinda"><span class="pill">Kind of</span></label>
-        <label><input type="radio" name="pain_${p.id}" value="no"><span class="pill">Not us</span></label>
-      </div>
-    </div>`;
-  });
-  painHtml += '</div>';
+  const el = document.getElementById(cat.containerId);
+  if (el) el.innerHTML = cat.pains.map(renderPainRow).join('');
 });
-painContainer.innerHTML = painHtml;
 
 // ============================================
 // STATE
 // ============================================
-const state = {
-  painAnswers: {},
-  topPain: null,
-  evidence: {},
-};
+const state = { painAnswers: {}, topPain: null, evidence: {} };
 
 function getPainById(id) {
   for (const cat of painCategories) {
@@ -1066,23 +937,111 @@ function getPainById(id) {
 }
 
 // ============================================
-// PAIN CHECKLIST HANDLER
+// PAGE NAVIGATION
 // ============================================
-painContainer.addEventListener('change', e => {
+const PAGE_ORDER  = ['1', '2a', '2b', '2c', '2d', '2e', '2f', '3', '4'];
+const TOTAL_PAGES = PAGE_ORDER.length;
+
+const stepLabels = {
+  '1':  'About Your Company',
+  '2a': 'Sales Stage',
+  '2b': 'Price Book & Pricing',
+  '2c': 'Contract & Handoff',
+  '2d': 'Work Orders & Materials',
+  '2e': 'Vendor Communication',
+  '2f': 'Costs & Impact',
+  '3':  'Your Top Pain',
+  '4':  'Tell Us More',
+};
+
+let currentPageIdx = 0;
+
+function goToPage(idx) {
+  // Hide all
+  document.querySelectorAll('section.step').forEach(el => el.classList.remove('active'));
+
+  // Show target
+  const stepId = PAGE_ORDER[idx];
+  document.querySelector(`section.step[data-step="${stepId}"]`).classList.add('active');
+  currentPageIdx = idx;
+
+  // Update step-num label inside the active section
+  const stepNumEl = document.querySelector(`section.step[data-step="${stepId}"] .step-num`);
+  if (stepNumEl) stepNumEl.textContent = `Step ${idx + 1} of ${TOTAL_PAGES}`;
+
+  // Refresh dynamic sections when navigating to them
+  if (stepId === '3') updateTop1Availability();
+  if (stepId === '4') renderEvidenceBlocks();
+
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  updateNav();
+}
+
+function updateNav() {
+  const pageNum = currentPageIdx + 1;
+  const stepId  = PAGE_ORDER[currentPageIdx];
+
+  document.getElementById('backBtn').classList.toggle('hidden', currentPageIdx === 0);
+  document.getElementById('nextBtn').classList.toggle('hidden', currentPageIdx === TOTAL_PAGES - 1);
+  document.getElementById('submitBtn').classList.toggle('hidden', currentPageIdx !== TOTAL_PAGES - 1);
+
+  const pct = Math.round((pageNum / TOTAL_PAGES) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressPct').textContent = pct + '%';
+  document.getElementById('progressLabel').textContent = `Step ${pageNum} of ${TOTAL_PAGES} · ${stepLabels[stepId]}`;
+}
+
+function clearValidation() { document.getElementById('validationMsg').textContent = ''; }
+function showValidation(msg) { document.getElementById('validationMsg').textContent = msg; }
+
+// Next
+document.getElementById('nextBtn').addEventListener('click', () => {
+  clearValidation();
+  const stepId = PAGE_ORDER[currentPageIdx];
+
+  // Step 1: require 3 dropdowns
+  if (stepId === '1') {
+    const selects = document.querySelectorAll('[data-step="1"] select');
+    if (!Array.from(selects).every(s => s.value)) {
+      showValidation('Please select your role, revenue, and work type to continue.');
+      return;
+    }
+  }
+
+  // Last pain page (2f): require at least 1 "yes" before moving to picker
+  if (stepId === '2f') {
+    const anyYes = Object.values(state.painAnswers).some(v => v === 'yes');
+    if (!anyYes) {
+      showValidation('Mark at least one pain as "Yes" across any section to continue.');
+      return;
+    }
+  }
+
+  // Step 3: require topPain selected
+  if (stepId === '3' && !state.topPain) {
+    showValidation('Select your top pain to continue.');
+    return;
+  }
+
+  if (currentPageIdx < TOTAL_PAGES - 1) goToPage(currentPageIdx + 1);
+});
+
+// Back
+document.getElementById('backBtn').addEventListener('click', () => {
+  clearValidation();
+  if (currentPageIdx > 0) goToPage(currentPageIdx - 1);
+});
+
+// ============================================
+// PAIN RADIO HANDLER (delegated)
+// ============================================
+document.addEventListener('change', e => {
   if (e.target.type === 'radio') {
     const match = e.target.name.match(/^pain_(\d+)$/);
     if (match) {
       const painId = parseInt(match[1]);
       state.painAnswers[painId] = e.target.value;
-
-      // If they changed their top pain to non-yes, clear top pain
-      if (state.topPain === painId && e.target.value !== 'yes') {
-        state.topPain = null;
-        renderEvidenceBlocks();
-      }
-
-      updateTop1Availability();
-      updateStepVisibility();
+      if (state.topPain === painId && e.target.value !== 'yes') state.topPain = null;
       persist();
     }
   }
@@ -1093,31 +1052,29 @@ painContainer.addEventListener('change', e => {
 // ============================================
 function updateTop1Availability() {
   const available = document.getElementById('top1Available');
-  const selected = document.getElementById('top1Selected');
+  const selected  = document.getElementById('top1Selected');
 
   const yesPains = Object.entries(state.painAnswers)
-    .filter(([_, v]) => v === 'yes')
-    .map(([k, _]) => parseInt(k));
+    .filter(([, v]) => v === 'yes')
+    .map(([k]) => parseInt(k));
 
   if (yesPains.length === 0) {
-    available.innerHTML = '<div class="top1-empty">Go back to Step 2 and mark some pains as "yes, painful" to populate this list.</div>';
+    available.innerHTML = '<div class="top1-empty">Go back and mark some pains as "Yes" to populate this list.</div>';
   } else {
-    let h = '';
-    yesPains.forEach(pid => {
+    available.innerHTML = yesPains.map(pid => {
       const p = getPainById(pid);
-      const isSelected = state.topPain === pid;
-      h += `<button type="button" class="top1-chip" data-pain-id="${pid}" ${isSelected ? 'disabled' : ''}>
-        <span style="color: var(--ink-mute); font-family: 'Fraunces', serif; font-style: italic; margin-right: 6px;">${pid}.</span>${p.text.substring(0, 90)}${p.text.length > 90 ? '…' : ''}
+      const sel = state.topPain === pid;
+      return `<button type="button" class="top1-chip" data-pain-id="${pid}" ${sel ? 'disabled' : ''}>
+        <span style="color:var(--ink-mute);font-family:'Fraunces',serif;font-style:italic;margin-right:6px;">${pid}.</span>${p.text.substring(0, 90)}${p.text.length > 90 ? '…' : ''}
       </button>`;
-    });
-    available.innerHTML = h;
+    }).join('');
   }
 
   if (state.topPain) {
     const p = getPainById(state.topPain);
     selected.innerHTML = `<div class="top1-selected-slot">
       <span class="top1-star">★</span>
-      <span class="top1-text"><span style="color: var(--ink-mute); font-family: 'Fraunces', serif; font-style: italic; margin-right: 6px;">${state.topPain}.</span>${p.text}</span>
+      <span class="top1-text"><span style="color:var(--ink-mute);font-family:'Fraunces',serif;font-style:italic;margin-right:6px;">${state.topPain}.</span>${p.text}</span>
       <button type="button" class="top1-remove" id="top1RemoveBtn" aria-label="Remove">×</button>
     </div>`;
   } else {
@@ -1131,11 +1088,9 @@ function updateTop1Availability() {
 document.getElementById('top1Available').addEventListener('click', e => {
   const btn = e.target.closest('.top1-chip');
   if (btn && !btn.disabled) {
-    const pid = parseInt(btn.dataset.painId);
-    state.topPain = pid;
+    state.topPain = parseInt(btn.dataset.painId);
     updateTop1Availability();
-    renderEvidenceBlocks();
-    updateStepVisibility();
+    clearValidation();
     persist();
   }
 });
@@ -1144,8 +1099,6 @@ document.getElementById('top1Selected').addEventListener('click', e => {
   if (e.target.id === 'top1RemoveBtn' || e.target.closest('#top1RemoveBtn')) {
     state.topPain = null;
     updateTop1Availability();
-    renderEvidenceBlocks();
-    updateStepVisibility();
     persist();
   }
 });
@@ -1156,25 +1109,23 @@ document.getElementById('top1Selected').addEventListener('click', e => {
 function renderEvidenceBlocks() {
   const container = document.getElementById('evidenceBlocks');
   if (!state.topPain) {
-    container.innerHTML = '<p style="color: var(--ink-soft); font-style: italic; font-size: 16px;">Pick your top pain above to reveal the questions.</p>';
+    container.innerHTML = '<p style="color:var(--ink-soft);font-style:italic;font-size:16px;">Pick your top pain in the previous step to reveal these questions.</p>';
     return;
   }
-
   const p = getPainById(state.topPain);
   let h = `<div class="evidence-block">
     <div class="evidence-header">
       <div class="evidence-pain-num">Your Top Pain</div>
       <div class="evidence-pain-title">${p.text}</div>
     </div>`;
-  evidenceQuestions.forEach((eq, qidx) => {
-    const key = `e_${state.topPain}_${eq.id}`;
+  evidenceQuestions.forEach((eq, i) => {
     const val = state.evidence[state.topPain]?.[eq.id] || '';
     h += `<div class="evidence-q">
       <label class="q-label">
-        <span class="evidence-q-num">${qidx + 1}.</span>${eq.label}
+        <span class="evidence-q-num">${i + 1}.</span>${eq.label}
         ${eq.kill ? '<span class="evidence-q-kill">KEY</span>' : ''}
       </label>
-      <textarea name="${key}" data-pain="${state.topPain}" data-q="${eq.id}" placeholder="${eq.placeholder}">${val}</textarea>
+      <textarea name="e_${state.topPain}_${eq.id}" data-pain="${state.topPain}" data-q="${eq.id}" placeholder="${eq.placeholder}">${val}</textarea>
     </div>`;
   });
   h += '</div>';
@@ -1183,8 +1134,7 @@ function renderEvidenceBlocks() {
 
 document.getElementById('evidenceBlocks').addEventListener('input', e => {
   if (e.target.tagName === 'TEXTAREA') {
-    const pid = e.target.dataset.pain;
-    const q = e.target.dataset.q;
+    const { pain: pid, q } = e.target.dataset;
     if (pid && q) {
       if (!state.evidence[pid]) state.evidence[pid] = {};
       state.evidence[pid][q] = e.target.value;
@@ -1194,75 +1144,20 @@ document.getElementById('evidenceBlocks').addEventListener('input', e => {
 });
 
 // ============================================
-// STEP VISIBILITY + PROGRESS
-// ============================================
-let step3WasVisible = false;
-let step4WasVisible = false;
-
-function updateStepVisibility() {
-  const anyYes = Object.values(state.painAnswers).some(v => v === 'yes');
-  const step3El = document.getElementById('step3');
-  const step4El = document.getElementById('step4');
-
-  const step3Visible = anyYes;
-  const step4Visible = !!state.topPain;
-
-  step3El.classList.toggle('hidden', !step3Visible);
-  step4El.classList.toggle('hidden', !step4Visible);
-
-  // On mobile, gently scroll to a newly-revealed section so users don't miss it.
-  // Only fires the FIRST time each section appears, not on every re-render.
-  const isMobile = window.matchMedia('(max-width: 768px)').matches;
-  if (isMobile && step3Visible && !step3WasVisible) {
-    step3WasVisible = true;
-    setTimeout(() => {
-      step3El.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
-  }
-  if (isMobile && step4Visible && !step4WasVisible) {
-    step4WasVisible = true;
-    setTimeout(() => {
-      step4El.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 150);
-  }
-
-  let filled = 0;
-  const total = 4;
-
-  const step1Inputs = document.querySelectorAll('[data-step="1"] select');
-  const step1Filled = Array.from(step1Inputs).every(i => i.value.trim());
-  if (step1Filled) filled++;
-  if (Object.keys(state.painAnswers).length >= 5) filled++;
-  if (state.topPain) filled++;
-
-  const evidenceTouched = state.topPain &&
-    state.evidence[state.topPain] &&
-    Object.values(state.evidence[state.topPain]).some(v => v && v.trim());
-  if (evidenceTouched) filled++;
-
-  const pct = Math.round((filled / total) * 100);
-  document.getElementById('progressFill').style.width = pct + '%';
-  document.getElementById('progressPct').textContent = pct + '%';
-
-  const labels = ['Getting started', 'Marking pain points', 'Picking your top pain', 'Sharing the story', 'Ready to submit'];
-  document.getElementById('progressLabel').textContent = labels[filled] || 'In progress';
-
-  document.getElementById('submitBtn').disabled = !state.topPain;
-}
-
-// ============================================
-// AUTO-SAVE (in-memory only)
+// AUTO-SAVE
 // ============================================
 let saveTimer;
 function persist() {
   clearTimeout(saveTimer);
-  const el = document.getElementById('saveState');
-  el.textContent = 'Saving…';
+  document.getElementById('saveState').textContent = 'Saving…';
   saveTimer = setTimeout(() => {
-    el.textContent = 'Saved ✓ · your answers persist as long as this tab is open';
-    updateStepVisibility();
+    document.getElementById('saveState').textContent = 'Saved ✓ · your answers persist as long as this tab is open';
   }, 400);
 }
+
+document.querySelectorAll('[data-step="1"] select, [data-step="1"] input, [data-step="1"] textarea').forEach(el => {
+  el.addEventListener('input', persist);
+});
 
 // ============================================
 // SUBMIT
@@ -1270,29 +1165,30 @@ function persist() {
 document.getElementById('surveyForm').addEventListener('submit', async e => {
   e.preventDefault();
   const formData = new FormData(e.target);
+
   const payload = {
     context: {
-      role: formData.get('role'),
-      revenue: formData.get('revenue'),
-      workType: formData.get('workType'),
+      role:            formData.get('role'),
+      revenue:         formData.get('revenue'),
+      workType:        formData.get('workType'),
       currentSoftware: formData.get('currentSoftware'),
     },
-    painAnswers: state.painAnswers,
-    customPain: formData.get('customPain'),
-    topPain: state.topPain,
-    topPainText: state.topPain ? getPainById(state.topPain)?.text : null,
-    evidence: state.evidence,
+    painAnswers:  state.painAnswers,
+    customPain:   formData.get('customPain'),
+    topPain:      state.topPain,
+    topPainText:  state.topPain ? getPainById(state.topPain)?.text : null,
+    evidence:     state.evidence,
     close: {
-      noBrainer: formData.get('noBrainer'),
+      noBrainer:   formData.get('noBrainer'),
       priceAnchor: formData.get('priceAnchor'),
-      name: formData.get('name'),
-      email: formData.get('email'),
-      referrals: formData.get('referrals'),
+      name:        formData.get('name'),
+      email:       formData.get('email'),
+      referrals:   formData.get('referrals'),
     },
     submittedAt: new Date().toISOString(),
   };
 
-  const SUPABASE_URL = 'https://cyjtuxwsiyxugwvqjjik.supabase.co';
+  const SUPABASE_URL      = 'https://cyjtuxwsiyxugwvqjjik.supabase.co';
   const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN5anR1eHdzaXl4dWd3dnFqamlrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY2MzY2MDAsImV4cCI6MjA5MjIxMjYwMH0.OmQr2hlfkrY30t0JKYhAwCpFf39FsZPuXuFB_mmAdH4';
 
   const btn = document.getElementById('submitBtn');
@@ -1300,25 +1196,6 @@ document.getElementById('surveyForm').addEventListener('submit', async e => {
   btn.textContent = 'Submitting…';
 
   try {
-    const row = {
-      role:             payload.context.role,
-      revenue:          payload.context.revenue,
-      work_type:        payload.context.workType,
-      current_software: payload.context.currentSoftware,
-      pain_answers:     payload.painAnswers,
-      custom_pain:      payload.customPain,
-      top_pain_id:      payload.topPain,
-      top_pain_text:    payload.topPainText,
-      evidence:         payload.evidence,
-      no_brainer:       payload.close.noBrainer,
-      price_anchor:     payload.close.priceAnchor,
-      name:             payload.close.name,
-      email:            payload.close.email,
-      referrals:        payload.close.referrals,
-      submitted_at:     payload.submittedAt,
-      raw_payload:      payload,
-    };
-
     const res = await fetch(`${SUPABASE_URL}/rest/v1/survey_responses`, {
       method: 'POST',
       headers: {
@@ -1327,20 +1204,34 @@ document.getElementById('surveyForm').addEventListener('submit', async e => {
         'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
         'Prefer': 'return=minimal',
       },
-      body: JSON.stringify(row),
+      body: JSON.stringify({
+        role:             payload.context.role,
+        revenue:          payload.context.revenue,
+        work_type:        payload.context.workType,
+        current_software: payload.context.currentSoftware,
+        pain_answers:     payload.painAnswers,
+        custom_pain:      payload.customPain,
+        top_pain_id:      payload.topPain,
+        top_pain_text:    payload.topPainText,
+        evidence:         payload.evidence,
+        no_brainer:       payload.close.noBrainer,
+        price_anchor:     payload.close.priceAnchor,
+        name:             payload.close.name,
+        email:            payload.close.email,
+        referrals:        payload.close.referrals,
+        submitted_at:     payload.submittedAt,
+        raw_payload:      payload,
+      }),
     });
 
-    if (!res.ok) {
-      const err = await res.text();
-      throw new Error(err);
-    }
+    if (!res.ok) throw new Error(await res.text());
 
     document.getElementById('responseId').textContent = Math.random().toString(36).substring(2, 10).toUpperCase();
   } catch (err) {
     console.error('Submission error:', err);
     btn.disabled = false;
     btn.textContent = 'Submit responses';
-    document.getElementById('saveState').textContent = 'Submission failed — please try again.';
+    showValidation('Submission failed — please try again.');
     return;
   }
 
@@ -1353,12 +1244,9 @@ document.getElementById('surveyForm').addEventListener('submit', async e => {
 // ============================================
 // INIT
 // ============================================
-document.querySelectorAll('[data-step="1"] select, [data-step="1"] input, [data-step="1"] textarea').forEach(el => {
-  el.addEventListener('input', persist);
-});
 renderEvidenceBlocks();
 updateTop1Availability();
-updateStepVisibility();
+goToPage(0);
 </script>
 
 </body>

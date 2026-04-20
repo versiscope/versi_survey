@@ -467,7 +467,7 @@
      MOBILE
      ============================================ */
   @media (max-width: 768px) {
-    body { font-size: 16px; }
+    body { font-size: 16px; padding-bottom: calc(200px + env(safe-area-inset-bottom)); }
     .container { padding: 0 20px; }
 
     header.hero { padding: 44px 0 32px; }
@@ -519,7 +519,7 @@
 
     .actions { padding: 12px 16px calc(12px + env(safe-area-inset-bottom)) 16px; }
     .actions-inner { flex-direction: column; align-items: stretch; gap: 8px; }
-    .actions-left { order: 3; align-items: center; }
+    .actions-left { order: 0; align-items: center; }
     button.next-btn, button.submit-btn { width: 100%; padding: 16px; font-size: 15px; order: 1; }
     button.back-btn { order: 2; width: 100%; padding: 14px; font-size: 15px; text-align: center; }
     .validation-msg { text-align: center; }
@@ -1124,7 +1124,6 @@ function renderEvidenceBlocks() {
     h += `<div class="evidence-q">
       <label class="q-label">
         <span class="evidence-q-num">${i + 1}.</span>${eq.label}
-        ${eq.kill ? '<span class="evidence-q-kill">KEY</span>' : ''}
       </label>
       <textarea name="e_${state.topPain}_${eq.id}" data-pain="${state.topPain}" data-q="${eq.id}" placeholder="${eq.placeholder}">${val}</textarea>
     </div>`;
